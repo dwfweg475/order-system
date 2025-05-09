@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>套餐選擇</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    h1 { font-size: 24px; }
+    .option-group { margin-top: 20px; }
+    .option-group label { display: block; margin-bottom: 8px; }
+    .footer { margin-top: 30px; padding: 10px; background: #ccc; text-align: center; }
+    .option-group{
+      border-top: 5px solid #ccc;
+      padding: 12px 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>麵線</h1>
+
+  <div class="option-group">
+    <h3>主餐<br><small>Select 1</small></h3>
+    <label>椒麻皮蛋
+      <input type="radio" name="main" value="椒麻皮蛋"> 小(70元)
+      <input type="radio" name="main" value="椒麻皮蛋"> 大(90元)
+    </label>
+    <label>綜合羹
+      <input type="radio" name="main" value="綜合羹"> 小(70元)
+      <input type="radio" name="main" value="綜合羹"> 大(90元)
+    </label>
+    <label>辣炒菜脯
+      <input type="radio" name="main" value="辣炒菜脯"> 小(60元)
+      <input type="radio" name="main" value="辣炒菜脯"> 大(80元)
+    </label>
+    <label>素排骨酥
+      <input type="radio" name="main" value="素排骨酥"> 小(60元)
+      <input type="radio" name="main" value="素排骨酥"> 大(80元)
+    </label>
+    <label>清麵線
+      <input type="radio" name="main" value="清麵線"> 小(50元)
+      <input type="radio" name="main" value="清麵線"> 大(70元)
+    </label>
+  </div>
+
+  <div class="option-group">
+    <h3>飄香慢滷<br><small>可任選2樣(40元以下)</small></h3>
+    <form id="option-group">
+      <label><input type="checkbox" name="braised" value="五香豆干"> 五香豆干</label><br>
+      <label><input type="checkbox" name="braised" value="海帶"> 海帶</label><br>
+      <label><input type="checkbox" name="braised" value="QQ糕"> QQ糕</label><br>
+      <label><input type="checkbox" name="braised" value="花干"> 花干</label><br>
+      <label><input type="checkbox" name="braised" value="白蘿蔔"> 白蘿蔔</label><br>
+      <label><input type="checkbox" name="braised" value="雲耳"> 雲耳</label><br>
+      <label><input type="checkbox" name="braised" value="A菜"> A菜</label><br>
+      <label><input type="checkbox" name="braised" value="大陸妹"> 大陸妹</label><br>
+      <label><input type="checkbox" name="braised" value="青江菜"> 青江菜</label><br>
+      <label><input type="checkbox" name="braised" value="滷蛋白"> 滷蛋白(冷)</label><br>
+      <label><input type="checkbox" name="braised" value="麻辣豆干"> 麻辣豆干 +10元</label><br>
+      <label><input type="checkbox" name="braised" value="麻辣QQ糕"> 麻辣QQ糕 +10元</label><br>
+      <label><input type="checkbox" name="braised" value="麻辣雲耳"> 麻辣雲耳 +10元</label><br>
+      <label><input type="checkbox" name="braised" value="麻辣蛋白"> 麻辣蛋白(冷) +10元</label><br>
+    </form>
+  </div>
+
+  <div class="option-group">
+    <h3>熱湯、甜點、飲品<br><small>可任選1樣(60元以下)</small></h3>
+    <label><input type="radio" name="dessert" value="芒果奶酪"> 芒果奶酪</label>
+    <label><input type="radio" name="dessert" value="百香果奶酪"> 百香果奶酪</label>
+    <label><input type="radio" name="dessert" value="草莓奶酪"> 草莓奶酪</label>
+    <label><input type="radio" name="dessert" value="銅鑼燒"> 銅鑼燒</label>
+    <label><input type="radio" name="dessert" value="芒果氣泡飲"> 芒果氣泡飲 +10元</label>
+    <label><input type="radio" name="dessert" value="百香果氣泡飲"> 百香果氣泡飲 +10元</label>
+    <label><input type="radio" name="dessert" value="草莓氣泡飲"> 草莓氣泡飲 +10元</label>
+    <label><input type="radio" name="dessert" value="西西里咖啡"> 西西里咖啡 +10元</label>
+    <label><input type="radio" name="dessert" value="拿鐵咖啡"> 拿鐵咖啡(熱) +10元</label>
+    <label><input type="radio" name="dessert" value="拿鐵咖啡"> 拿鐵咖啡(冰) +10元</label>
+    <label><input type="radio" name="dessert" value="美式咖啡"> 美式咖啡(熱)</label>
+    <label><input type="radio" name="dessert" value="美式咖啡"> 美式咖啡(冰)</label>
+    <label><input type="radio" name="dessert" value="冬瓜木耳蜜"> 冬瓜木耳蜜(冷)</label>
+    <label><input type="radio" name="dessert" value="洛神酸梅湯"> 洛神酸梅湯(冷)</label>
+    <label><input type="radio" name="dessert" value="桂花烏龍茶"> 桂花烏龍茶(熱)</label>
+    <label><input type="radio" name="dessert" value="桂花烏龍茶"> 桂花烏龍茶(冷)</label>
+    <label><input type="radio" name="dessert" value="番茄豆包蔬菜湯"> 番茄豆包蔬菜湯 +35元</label>
+    <label><input type="radio" name="dessert" value="金針排骨湯"> 金針排骨湯 +20元</label>
+    <label><input type="radio" name="dessert" value="鮮蔬餛飩湯"> 鮮蔬餛飩湯 +15元</label>
+    <label><input type="radio" name="dessert" value="清燉蘿蔔湯"> 清燉蘿蔔湯</label>
+  </div>
+
+  <div>
+    備註<input type="text" class="note">
+  </div>
+
+  <div class="footer">
+    Browsing Menu Only
+  </div>
+
+  <script>
+    // 範例：如果要記錄選擇，存在 localStorage
+    const radioButtons = document.querySelectorAll('input[name="main"]');
+    radioButtons.forEach(radio => {
+      radio.addEventListener('change', () => {
+        localStorage.setItem('set_main_option', radio.value);
+      });
+    });
+
+    const checkboxes = document.querySelectorAll('input[name="braised"]');
+
+    checkboxes.forEach(cb => {
+      cb.addEventListener('change', () => {
+        const checked = Array.from(checkboxes).filter(i => i.checked);
+        if (checked.length > 2) {
+          alert("最多只能選兩項！");
+          cb.checked = false; // 取消超出的選項
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html {
+          scroll-behavior: smooth;
+        }
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1, h2 { text-align: center; }
+        .category { margin-top: 30px; }
+        .menu-item { display: flex; align-items: center; margin-bottom: 10px; gap: 10px; flex-wrap: wrap; }
+        .menu-item input[type="number"], .menu-item input[type="text"] { width: 60px; }
+        .total { margin-top: 30px; font-size: 24px; text-align: center; }
+        .buttons { display: flex; justify-content: center; gap: 20px; margin-top: 20px; }
+        button { padding: 10px 20px; font-size: 16px; cursor: pointer; }
+        #order-summary { margin-top: 30px; white-space: pre-wrap; background: #f9f9f9; padding: 10px; border: 1px solid #ccc; }
+        nav ul {
+        background-color: rgb(230, 230, 230);
+        list-style: none; /* 移除項目符號 */
+        margin: 0; /* 外距*/
+        padding: 0; /* 內距*/
+        }
+        nav a {
+          color: inherit; /* 移除超連結顏色 */
+          display: block; /* 讓 <a> 填滿 <li> */
+          font-size: 1.2rem;
+          padding: 10px;
+          text-decoration: none; /* 移除超連結底線 */
+        }
+        nav a:hover {
+          background-color: rgb(115, 115, 115);
+          color: white;
+        }
+        nav ul {
+          display: flex; /*設定為彈性盒子*/
+          justify-content: space-evenly; /*置中分散排列*/
+        }
+      </style>
+</head>
+<body>
+    <div id="item3" class="category">
+        <h2>麵食</h2>
+      
+        <div id="item3" class="menu-item" data-name="濃厚番茄蔬菜湯麵" data-price="95">
+          <span>濃厚番茄蔬菜湯麵</span>
+          台式陽春麵(120元)<input type="number" min="0" class="N-qty" data-extra="25" onchange="updateTotal()">
+          日式勁拉麵(120元)<input type="number" min="0" class="N-qty" data-extra="25" onchange="updateTotal()">
+          彩虹蔬菜麵(150元)<input type="number" min="0" class="R-qty" data-extra="55" onchange="updateTotal()">
+        </div>
+      
+        <div class="menu-item" data-name="椒麻皮蛋乾拌麵" data-price="95">
+          <span>椒麻皮蛋乾拌麵</span>
+          台式陽春麵(95元)<input type="number" min="0" class="N-qty" onchange="updateTotal()">
+          日式勁拉麵(95元)<input type="number" min="0" class="N-qty" onchange="updateTotal()">
+          彩虹蔬菜麵(125元)<input type="number" min="0" class="R-qty" data-extra="30" onchange="updateTotal()">
+        </div>
+      
+        <div class="menu-item" data-name="椒麻素燥乾拌麵" data-price="85">
+          <span>椒麻素燥乾拌麵</span>
+          台式陽春麵(85元)<input type="number" min="0" class="N-qty" onchange="updateTotal()">
+          日式勁拉麵(85元)<input type="number" min="0" class="N-qty" onchange="updateTotal()">
+          彩虹蔬菜麵(115元)<input type="number" min="0" class="R-qty" data-extra="30" onchange="updateTotal()">
+        </div>
+      
+        <div class="menu-item" data-name="素燥乾拌麵" data-price="75">
+          <span>素燥乾拌麵</span>
+          台式陽春麵(75元)<input type="number" min="0" class="N-qty" onchange="updateTotal()">
+          日式勁拉麵(75元)<input type="number" min="0" class="N-qty" onchange="updateTotal()">
+          彩虹蔬菜麵(105元)<input type="number" min="0" class="R-qty" data-extra="30" onchange="updateTotal()">
+        </div>
+      
+        <div class="menu-item">
+          備註<input type="text" class="note">
+      </div>
+    </div>
+
+    <div class="total">
+        總金額：<span id="totalPrice">0</span> 元
+    </div>
+
+    <div class="buttons">
+        <button onclick="clearAll()">清除全部</button>
+        <button onclick="addToCart()">加入購物車</button>
+        <button onclick="window.location.href='cart.html'">查看購物車</button>
+    </div>
+
+    <script src="cart-utils.js"></script>
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+          font-family: sans-serif;
+          padding: 20px;
+        }
+        .menu-item {
+          margin-bottom: 10px;
+          cursor: pointer;
+          color: black;
+          border-bottom: 1px solid #ccc;
+          padding: 10px 0;
+        }
+        nav ul {
+            background-color: rgb(230, 230, 230);
+            list-style: none; /* 移除項目符號 */
+            margin: 0; /* 外距*/
+            padding: 0; /* 內距*/
+        }
+        nav a {
+            color: inherit; /* 移除超連結顏色 */
+            display: block; /* 讓 <a> 填滿 <li> */
+            font-size: 1.2rem;
+            padding: 10px;
+            text-decoration: none; /* 移除超連結底線 */
+        }
+        nav a:hover {
+            background-color: rgb(115, 115, 115);
+            color: white;
+        }
+        nav ul {
+            display: flex; /*設定為彈性盒子*/
+            justify-content: space-evenly; /*置中分散排列*/
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 20% auto;
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .modal-content button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+      </style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="#item1">麵線</a></li>
+            <li><a href="#item2">滷香飯</a></li>
+            <li><a href="#item3">麵食</a></li>
+            <li><a href="#item4">植物肉手工餛飩</a></li>
+            <li><a href="#item5">刈包</a></li>
+            <li><a href="#item6">飄香慢滷</a></li>
+            <li><a href="#item7">甜點、飲品</a></li>
+            <li><a href="#item8">熱湯</a></li>
+        </ul>
+    </nav>
+
+    <h1>日光蔬苑Menu</h1>
+    <div>
+        <div id="item1" class="menu-item" onclick="handleClick('herb_chicken')"><h3>麵線</h3><p></p></div>
+    </div>
+    <div>
+        <div id="item2" class="menu-item" onclick="handleClick('thai_pork')"><h3>滷香飯</h3><p></p></div>
+    </div>
+    <div>
+        <div id="item3" class="menu-item" onclick="handleClick('pepper_pork')"><h3>麵食</h3><p></p></div>
+    </div>
+    <div>
+        <div id="item4" class="menu-item" onclick="handleClick('teriyaki_beef')"><h3>植物肉手工餛飩</h3><p></p></div>
+    </div>
+    <div>
+        <div id="item5" class="menu-item" onclick="handleClick('shrimp')"><h3>刈包</h3><p></p></div>
+    </div>
+    <div onclick="location.href='single_Braised.html?item=plain'">
+        <div id="item6" class="menu-item"><h3>飄香慢滷</h3><p></p></div>
+    </div>
+    <div onclick="location.href='single_Dessert.html?item=plain'">
+        <div id="item7" class="menu-item"><h3>甜點、飲品</h3><p></p></div>
+    </div>
+    <div onclick="location.href='single_Soup.html?item=plain'">
+        <div id="item8" class="menu-item"><h3>熱湯</h3><p></p></div>
+    </div>
+
+    <div id="optionModal" class="modal">
+        <div class="modal-content" id="modalContent">
+        </div>
+    </div>
+
+    <script>
+        let currentItem = "";
+      
+        function handleClick(itemName) {
+          currentItem = itemName;
+          const modal = document.getElementById("optionModal");
+          const modalContent = document.getElementById("modalContent");
+
+          modalContent.innerHTML = "<p>請選擇：</p>";  // 清空內容
+
+          const setButton = document.createElement("button");  // 建立套餐按鈕
+          setButton.textContent = "套餐";
+          setButton.onclick = () => goToPage("set");
+
+          const singleButton = document.createElement("button");   // 建立單點按鈕
+          singleButton.textContent = "單點";
+          singleButton.onclick = () => goToPage("single");
+
+          modalContent.appendChild(setButton);   // 插入到 modal 內容中
+          modalContent.appendChild(singleButton);
+
+          modal.style.display = "block";  // 顯示 modal
+        }
+      
+        function goToPage(option) {
+            document.getElementById("optionModal").style.display = "none";
+            let url = "";
+
+            if (option === "set") {
+                switch(currentItem){
+                    case "herb_chicken":
+                        url = "set.html";
+                        break;
+                    case "thai_pork":
+                        url = "set_rice.html";
+                        break;
+                    case "pepper_pork":
+                        url = "set_noodle.html";
+                        break;
+                    case "teriyaki_beef":
+                        url = "set_dumpling.html";
+                        break;
+                    case "shrimp":
+                        url = "set_YiBao.html";
+                        break;
+                }
+            }else{
+                switch (currentItem) {
+                    case "herb_chicken":
+                        url = "single.html";
+                        break;
+                    case "thai_pork":
+                        url = "single_rice.html";
+                        break;
+                    case "pepper_pork":
+                        url = "single_noodle.html";
+                        break;
+                    case "teriyaki_beef":
+                        url = "single_dumpling.html";
+                        break;
+                    case "shrimp":
+                        url = "single_YiBao.html";
+                        break;
+                    case "plain":
+                        url = "single_Braised.html";
+                        break;
+                    case "dessert":
+                        url = "single_Dessert.html";
+                        break;
+                    default:
+                        url = "single_Soup.html";
+                }
+            }
+            window.location.href = url + "?item=" + encodeURIComponent(currentItem);
+        }
+      
+        // 點擊視窗外關閉彈窗
+        window.onclick = function(event) {
+          const modal = document.getElementById("optionModal");
+          if (event.target === modal) {
+            modal.style.display = "none";
+          }
+        }
+    </script>
+</body>
+</html>

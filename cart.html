@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>購物車</title>
+  <style>
+    .cart-item { margin: 10px 0; border-bottom: 1px solid #ccc; padding: 5px; }
+    .total { font-weight: bold; margin-top: 20px; }
+    button { margin-left: 10px; }
+  </style>
+</head>
+<body>
+  <h2>購物車內容</h2>
+  <div id="cartItems"></div>
+  <div class="total">總金額：<span id="cartTotal">0</span> 元</div>
+  <button onclick="clearCart()">清空購物車</button>
+  <button onclick="goHome()">回到主頁</button>
+
+  <script>
+    function loadCart() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const cartItemsDiv = document.getElementById('cartItems');
+      const totalDisplay = document.getElementById('cartTotal');
+      cartItemsDiv.innerHTML = "";
+
+      let total = 0;  // 用來計算總金額
+
+      cart.forEach((item, index) => {
+        const itemDiv = document.createElement('div');
+        itemDiv.className = 'cart-item';
+        const itemTotal = item.price * item.quantity;
+        total += itemTotal;
+
+        itemDiv.innerHTML = `
+          <span>${item.name}</span>  
+          x ${item.quantity} 
+          
+          <button onclick="removeItem(${index})">刪除</button>
+        `;
+        cartItemsDiv.appendChild(itemDiv);
+      });
+
+      totalDisplay.innerText = total;
+    }
+
+    function removeItem(index) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.splice(index, 1);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      loadCart();
+    }
+
+    function clearCart() {
+      localStorage.removeItem('cart');
+      loadCart();
+    }
+
+    function goHome() {
+      window.location.href = "main.html"; 
+    }
+
+    // 初始載入
+    loadCart();
+  </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1, h2 { text-align: center; }
+        .category { margin-top: 30px; }
+        .menu-item { display: flex; align-items: center; margin-bottom: 10px; gap: 10px; flex-wrap: wrap; }
+        .menu-item input[type="number"], .menu-item input[type="text"] { width: 60px; }
+        .total { margin-top: 30px; font-size: 24px; text-align: center; }
+        .buttons { display: flex; justify-content: center; gap: 20px; margin-top: 20px; }
+        button { padding: 10px 20px; font-size: 16px; cursor: pointer; }
+        #order-summary { margin-top: 30px; white-space: pre-wrap; background: #f9f9f9; padding: 10px; border: 1px solid #ccc; }
+    </style>
+</head>
+<body>
+    <div id="item1" class="category">
+        <h2>麵線</h2>
+        <div class="menu-item" data-name="麵線 椒麻皮蛋" data-price="70">
+          <span>椒麻皮蛋 </span>
+          小(70元)<input type="number" min="0" class="small-qty" onchange="updateTotal()">
+          大(90元)<input type="number" min="0" class="large-qty" onchange="updateTotal()">
+        </div>
+        <div class="menu-item" data-name="麵線 綜合羹" data-price="70">
+          <span>綜合羹 </span>
+          小(70元)<input type="number" min="0" class="small-qty" onchange="updateTotal()">
+          大(90元)<input type="number" min="0" class="large-qty" onchange="updateTotal()">
+        </div>
+        <div class="menu-item" data-name="麵線 辣炒菜脯" data-price="60">
+          <span>辣炒菜脯 </span>
+          小(60元)<input type="number" min="0" class="small-qty" onchange="updateTotal()">
+          大(80元)<input type="number" min="0" class="large-qty" onchange="updateTotal()">
+        </div>
+        <div class="menu-item" data-name="麵線 素排骨酥" data-price="60">
+          <span>素排骨酥 </span>
+          小(60元)<input type="number" min="0" class="small-qty" onchange="updateTotal()">
+          大(80元)<input type="number" min="0" class="large-qty" onchange="updateTotal()">
+        </div>
+        <div class="menu-item" data-name="清麵線" data-price="50">
+          <span>清麵線 </span>
+          小(50元)<input type="number" min="0" class="small-qty" onchange="updateTotal()">
+          大(70元)<input type="number" min="0" class="large-qty" onchange="updateTotal()">
+        </div>
+      </div>
+      <div class="menu-item">
+        備註<input type="text" class="note">
+      </div>
+
+      <div class="total">
+        總金額：<span id="totalPrice">0</span> 元
+      </div>
+
+      <div class="buttons">
+        <button onclick="clearAll()">清除全部</button>
+        <button onclick="addToCart()">加入購物車</button>
+        <button onclick="window.location.href='cart.html'">查看購物車</button>
+      </div>
+
+      <script src="cart-utils.js">
+      </script>
+</body>
+</html>

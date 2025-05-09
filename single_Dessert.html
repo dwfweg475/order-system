@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1, h2 { text-align: center; }
+        .category { margin-top: 30px; }
+        .menu-item { display: flex; align-items: center; margin-bottom: 10px; gap: 10px; flex-wrap: wrap; }
+        .menu-item input[type="number"], .menu-item input[type="text"] { width: 60px; }
+        .total { margin-top: 30px; font-size: 24px; text-align: center; }
+        .buttons { display: flex; justify-content: center; gap: 20px; margin-top: 20px; }
+        button { padding: 10px 20px; font-size: 16px; cursor: pointer; }
+        #order-summary { margin-top: 30px; white-space: pre-wrap; background: #f9f9f9; padding: 10px; border: 1px solid #ccc; }
+    </style>
+</head>
+<body>
+    <div id="item7" class="category">
+        <h2>甜點、飲品</h2>
+        <div class="menu-item" data-name="手作奶酪(芒果)" data-price="60">
+            芒果奶酪 (60元)<input type="number" min="0" class="dessert-qty" onchange="updateTotal()">
+        </div>
+        <div class="menu-item" data-name="手作奶酪(百香果)" data-price="60">
+            百香果奶酪 (60元)<input type="number" min="0" class="dessert-qty" onchange="updateTotal()">
+        </div>
+        <div class="menu-item" data-name="手作奶酪(草莓)" data-price="60">
+            草莓奶酪 (60元)<input type="number" min="0" class="dessert-qty" onchange="updateTotal()">
+        </div>
+        <div class="menu-item" data-name="銅鑼燒" data-price="40">
+            銅鑼燒 (40元)<input type="number" min="0" class="dessert-qty" onchange="updateTotal()">
+        </div>
+        <div class="menu-item" data-name="寒天晶球氣泡飲" data-price="70">
+            芒果氣泡飲 (70元)<input type="number" min="0" class="drinks-qty" onchange="updateTotal()">
+        </div>
+        <div class="menu-item" data-name="寒天晶球氣泡飲(百香果)" data-price="70">
+            百香果氣泡飲 (70元)<input type="number" min="0" class="drinks-qty" onchange="updateTotal()">
+        </div>
+        <div class="menu-item" data-name="寒天晶球氣泡飲(草莓)" data-price="70">
+            草莓氣泡飲 (70元)<input type="number" min="0" class="drinks-qty" onchange="updateTotal()">
+        </div>
+        <div class="menu-item" data-name="寒天晶球氣泡飲(檸檬)" data-price="70">
+            檸檬氣泡飲 (70元)<input type="number" min="0" class="drinks-qty" onchange="updateTotal()">
+        </div>
+        <div class="menu-item" data-name="西西里咖啡" data-price="70">
+            西西里咖啡 (70元)<input type="number" min="0" class="drinks-qty" onchange="updateTotal()">
+        </div>
+        <div class="menu-item" data-name="拿鐵咖啡" data-price="70">
+            拿鐵咖啡 (熱 70元)<input type="number" min="0" class="hot-qty" onchange="updateTotal()">
+            拿鐵咖啡 (冰 70元)<input type="number" min="0" class="iced-qty" onchange="updateTotal()">
+        </div>
+        <div class="menu-item" data-name="美式咖啡" data-price="50">
+            美式咖啡 (熱 50元)<input type="number" min="0" class="hot-qty" onchange="updateTotal()">
+            美式咖啡 (冰 50元)<input type="number" min="0" class="iced-qty" onchange="updateTotal()">
+        </div>
+        <div class="menu-item" data-name="冬瓜木耳蜜" data-price="60">
+            冬瓜木耳蜜 (冷 60元)<input type="number" min="0" class="drinks-qty" onchange="updateTotal()">
+        </div>
+        <div class="menu-item" data-name="洛神酸梅湯" data-price="60">
+            洛神酸梅湯 (冷 60元)<input type="number" min="0" class="drinks-qty" onchange="updateTotal()">
+        </div>
+        <div class="menu-item" data-name="桂花烏龍茶" data-price="50">
+            桂花烏龍茶 (熱 50元)<input type="number" min="0" class="hot-qty" onchange="updateTotal()">
+            桂花烏龍茶 (冷 50元)<input type="number" min="0" class="cold-qty" onchange="updateTotal()">
+        </div>
+        <div class="menu-item">
+            備註<input type="text" class="note">
+        </div>
+    </div>
+    
+
+      <div class="total">
+        總金額：<span id="totalPrice">0</span> 元
+      </div>
+
+      <div class="buttons">
+        <button onclick="clearAll()">清除全部</button>
+        <button onclick="addToCart()">加入購物車</button>
+        <button onclick="window.location.href='cart.html'">查看購物車</button>
+      </div>
+
+      <script src="cart-utils.js"></script>
+</body>
+</html>
